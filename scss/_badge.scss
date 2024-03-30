@@ -1,0 +1,10 @@
+$badgeBg: green $green09, blue $blue, yellow $yellowff;
+
+//순서를 주석으로 메모해둔다.  : 클래스명, 배경색
+//리스트배열의 단점 : 값이 많아질수록 그 순서를 외워야한다.
+
+@each $class, $color in $badgeBg {
+  .alarm-bar span.#{$class} {
+    background-color: $color;
+  }
+}

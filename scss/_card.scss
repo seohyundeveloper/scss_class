@@ -1,0 +1,103 @@
+//class radius, box-shadow, width, height, bgColor, padding
+$shadow1 : 0px 4px 2px 0px rgba(6, 6, 6, 0.05);
+
+$card: type1 20px $shadow1 165px 165px $white 20px, type2 20px $shadow1 165px 165px $white 20px;
+
+$cardIcon :(
+  "ico1" : '../images/ico_list1.svg',
+  "ico2" : '../images/ico_list2.svg',
+  "ico3" : '../images/ico_list3.svg',
+  "ico4" : '../images/ico_list4.svg'
+);
+
+$boxDesign : (
+  1: (
+    'borderColor': $grayca,
+    'radius': 20px,
+    'padding': 40px,
+    'shadow': rgba(0, 0, 0, 0.06)
+  ),
+  2: (
+    'borderColor': $green09,
+    'radius': 10px,
+    'padding': 10px,
+    'shadow': rgba(0, 0, 0, 0.06)
+  )
+);
+
+@each $class, $radius, $shadow, $width, $height, $bgColor, $padding in $card {
+  .card-#{$class} {
+    border-radius: $radius;
+    box-shadow: $shadow;
+    width: $width;
+    height: $height;
+    background-color: $bgColor;
+    padding: $padding;
+  }
+}
+
+@each $class, $url in $cardIcon {
+  .card-group > li.#{$class} {
+    background-image: url(#{$url});
+    background-position: right 16px bottom 16px;
+    background-repeat: no-repeat;
+  }
+}
+
+// map-get($map:맵변수이름, $key:키값) => 속성안에 있기 때문에 이렇게 사용
+
+.card-group2 {
+  a {
+    @include background('ico_arrow_gray.svg', right 40px center);
+    @include box($grayca, 20px, 40px, rgba(0, 0, 0, 0.06));
+    display: block;
+  }
+}
+// 필요없는 값인경우 null을 넣어준다. ( null -> 의도한 빈값 )
+
+
+.box-type1 {
+  @include box2($boxDesign,1);
+}
+
+.box-type2 {
+  @include box2($boxDesign,2);
+
+
+  //반응형 include는 가장 밑으로 처리해주기.
+  @include tablet {
+    font-size: 20px;
+    color: orange;
+  }
+  @include mobile {
+    font-size: 40px;
+    color: teal;
+  }
+}
+
+// .card-group3 {
+//   > li {
+//     &:nth-child(1) {
+//       @include background('ico_list1.svg', right 16px bottom 16px)
+//     }
+//     &:nth-child(2) {
+//       @include background('ico_list2.svg', right 16px bottom 16px)
+//     }
+//     &:nth-child(3) {
+//       @include background('ico_list3.svg', right 16px bottom 16px)
+//     }
+//     &:nth-child(4) {
+//       @include background('ico_list4.svg', right 16px bottom 16px)
+//     }
+//   }
+// }
+
+.card-group3 {
+  >li {
+    @for $index from 1 through 4 {
+      &.ico#{$index} {
+        @include background('ico_list#{$index}.svg', right 16px bottom 16px)
+      }
+    }
+  }
+}

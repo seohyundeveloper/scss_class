@@ -1,0 +1,16 @@
+input:not([type="checkbox"], [type="radio"]) {
+ // @extend .form;
+  // 특정 class를 참조해서 들어감.
+  @extend %form; 
+  //%로 정의하면 메모리에 남아있어 참조해 사용한다.
+  //컴파일 되지 않는다.
+}
+select {
+ // @extend .form;
+  @extend %form;
+}
+textarea {
+  height: 100px;
+ // @extend .form;
+  @extend %form;
+}

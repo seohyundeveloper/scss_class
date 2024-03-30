@@ -1,0 +1,39 @@
+.alarm-bar {
+  background:url(#{$imgUrl}ico_arrow_white.svg) no-repeat right 12px center $black1e;
+  font-size: 13px;
+  color: $white;
+  height: $radius38;
+  line-height: $radius38;
+  border-radius: $radius38;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 9px;
+}
+// flex를사용하면서 span요소를 inline-block으로 주지않고 block요소가 되게 변경할수 있다.
+
+.alarm-bar span {
+  color: $black1e;
+  background-color: $green09;
+  line-height: $radius22;
+  border-radius: $radius22;
+  font-size: 13px;
+  padding: 0 8px;
+  // &.yellow {
+  //   background-color: yellow;
+  // }
+
+  // 아래서 each 사용해서 생성되어서 중복되면 에러가 나옴.
+  // &.#{$yellowff} {
+  //   background-color: $yellowff;
+  // }
+}
+
+// @each 아이템변수명 in 리스트변수명 {
+//     css 코드
+// }
+
+
+

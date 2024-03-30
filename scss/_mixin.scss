@@ -1,0 +1,58 @@
+//믹스인 정의
+// @mixin 믹스인이름(매개변수) {
+//    css 작성
+// }
+
+//믹스인 실행
+// @include 믹스인 이름(인수);
+
+@mixin background($image, $cordinate:null, $color:null, $size: null) {
+  background: url(#{$imgUrl}#{$image}) no-repeat $cordinate $color;
+  background-size: $size;
+}
+
+// @include background("ico.svg", right 20px bottom 20px, $green09, auto)
+
+// background: url() no-repeat 좌표 색상;
+// background: url() no-repeat 좌표 배경이미지크기 색상;
+// 배경이미지를 따로 속성을 빼서 처리한다. 
+
+@mixin box($borderColor, $radius, $padding, $shadow:null){
+  border:1px solid $borderColor;
+  border-radius: $radius;
+  padding: $padding;
+  box-shadow: $shadow;
+}
+
+
+// @mixin box2(){
+//   border:1px solid map-get($boxDesign, 1, borderColor);
+//   border-radius: map-get($boxDesign, 1, radius);
+//   padding: map-get($boxDesign, 1, padding);
+//   box-shadow: $map-get($boxDesign, 1, shadow);
+// }
+
+@mixin box2($map, $firstKey){
+  border:1px solid map-get($map, $firstKey, borderColor);
+  border-radius: map-get($map, $firstKey, radius);
+  padding: map-get($map, $firstKey, padding);
+  box-shadow: map-get($map, $firstKey, shadow);
+}
+
+$mobileSize : 768px;
+$tabletSize : 1024px;
+
+
+@mixin mobile {
+  @media ( width < $mobileSize ) {
+    @content;
+    //모바일
+  }
+}
+
+@mixin tablet {
+  @media ( width < $tabletSize ) {
+    @content;
+    //태블릿  
+  }
+}

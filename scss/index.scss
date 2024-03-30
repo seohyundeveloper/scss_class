@@ -1,0 +1,12 @@
+@import 'var';  // 변수정리
+@import 'mixin'; // mixin
+@import 'extend'; // extend
+@import "reset"; // reset
+@import "text"; // 텍스트정의
+@import "space"; // 여백정의
+@import "badge"; // badge정의 
+@import "card"; // 카드
+@import "form"; // 
+@import "main"; //첫페이지
+// 확장자명 필요 없다. 예 _var.scss 에서 scss안써도 됨.
+// 같은폴더에 있으면 ./도 안써도 된다.
